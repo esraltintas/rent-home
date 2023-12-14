@@ -1,0 +1,11 @@
+.headerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1.25rem;
+    padding: 10px;
+    background-color: #F5F5F4;
+    color: #A8A29E;
+    opacity: 1;
+}
