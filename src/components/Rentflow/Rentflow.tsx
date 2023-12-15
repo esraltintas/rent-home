@@ -4,6 +4,7 @@ import EmailStep from "./EmailStep";
 import FullNameStep from "./FullNameStep";
 import SummaryStep from "./SummaryStep";
 import PhoneStep from "./PhoneStep";
+import SalaryStep from "./SalaryStep";
 
 const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
   const [currentStep, setStep] = useState("fullname");
@@ -12,6 +13,7 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
     phone: 0,
     name: "",
     surname: "",
+    salary: "",
     href: `/rented?productId=${productId}`,
   });
   const getStepCallback =
@@ -36,7 +38,10 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
             <EmailStep cb={getStepCallback("phone")} />
           )) ||
           (currentStep === "phone" && (
-            <PhoneStep cb={getStepCallback("summary")} />
+            <PhoneStep cb={getStepCallback("salary")} />
+          )) ||
+          (currentStep === "salary" && (
+            <SalaryStep cb={getStepCallback("summary")} />
           )) ||
           (currentStep === "summary" && (
             <SummaryStep collectedData={collectedData} />

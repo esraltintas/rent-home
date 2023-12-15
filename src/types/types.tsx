@@ -34,12 +34,17 @@ export interface PhoneStepProps {
   cb: (field: string, value: string) => void;
 }
 
+export interface SalaryStepProps {
+  cb: (field: string, value: string) => void;
+}
+
 export interface SummaryStepProps {
   collectedData: {
     email: string;
     phone: number;
     name: string;
     surname: string;
+    salary: string;
     href: string;
   };
 }

@@ -18,6 +18,9 @@ const SummaryStep: React.FC<SummaryStepProps> = (props) => {
         {props.collectedData.phone && (
           <div>Phone: {props.collectedData.phone}</div>
         )}
+        {props.collectedData.salary && (
+          <div>Salary: {props.collectedData.salary}</div>
+        )}
       </div>
       {props.collectedData.href && (
         <Link
