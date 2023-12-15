@@ -30,10 +30,14 @@ export interface InputFields {
   surname: string;
 }
 
+export interface PhoneStepProps {
+  cb: (field: string, value: string) => void;
+}
+
 export interface SummaryStepProps {
   collectedData: {
     email: string;
-    age: number;
+    phone: number;
     name: string;
     surname: string;
     href: string;

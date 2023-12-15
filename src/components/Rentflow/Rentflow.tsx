@@ -3,9 +3,10 @@ import { RentflowProps } from "@/types/types";
 import EmailStep from "./EmailStep";
 import FullNameStep from "./FullNameStep";
 import SummaryStep from "./SummaryStep";
+import PhoneStep from "./PhoneStep";
 
 const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
-  const [currentStep, setStep] = useState("email");
+  const [currentStep, setStep] = useState("fullname");
   const [collectedData, updateData] = useState({
     email: "",
     phone: 0,
@@ -28,11 +29,14 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
     <div className="flex flex-col items-center mt-20">
       <h4 className="mb-6 text-2xl">Rent Home</h4>
       <div className="flex justify-center w-60">
-        {(currentStep === "email" && (
-          <EmailStep cb={getStepCallback("fullname")} />
+        {(currentStep === "fullname" && (
+          <FullNameStep cb={getStepCallback("email")} />
         )) ||
-          (currentStep === "fullname" && (
-            <FullNameStep cb={getStepCallback("summary")} />
+          (currentStep === "email" && (
+            <EmailStep cb={getStepCallback("phone")} />
+          )) ||
+          (currentStep === "phone" && (
+            <PhoneStep cb={getStepCallback("summary")} />
           )) ||
           (currentStep === "summary" && (
             <SummaryStep collectedData={collectedData} />
