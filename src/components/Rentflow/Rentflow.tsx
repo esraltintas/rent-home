@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { RentflowProps } from "@/types/types";
 import EmailStep from "./EmailStep";
 import FullNameStep from "./FullNameStep";
+import SummaryStep from "./SummaryStep";
 
 const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
   const [currentStep, setStep] = useState("email");
@@ -32,6 +33,9 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
         )) ||
           (currentStep === "fullname" && (
             <FullNameStep cb={getStepCallback("summary")} />
+          )) ||
+          (currentStep === "summary" && (
+            <SummaryStep collectedData={collectedData} />
           ))}
       </div>
     </div>

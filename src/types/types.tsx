@@ -29,3 +29,13 @@ export interface InputFields {
   name: string;
   surname: string;
 }
+
+export interface SummaryStepProps {
+  collectedData: {
+    email: string;
+    age: number;
+    name: string;
+    surname: string;
+    href: string;
+  };
+}
