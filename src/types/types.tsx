@@ -12,3 +12,11 @@ export interface CardProps {
   room: number;
   price: number;
 }
+
+export interface RentflowProps {
+  productId: string;
+}
+
+export interface EmailStepProps {
+  cb: (field: string, value: string) => void;
+}

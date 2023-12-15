@@ -7,9 +7,9 @@ export default function Home() {
     <main className="flex min-h-screen">
       <Card
         src={HomeImg}
-        alt="Developer Insurance"
+        alt="Home"
         description="Sunny Designer apartment with rooftop terrace"
-        link="/buy/insurance_dev"
+        link="/rent/home"
         price={2000}
         location="Berlin"
         size={90}

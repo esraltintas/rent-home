@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className={`flex flex-1 justify-center ${bgColor} pt-8`}>
-      <div className="px-48">
+      <div className="max-w-md pb-20">
         <Image
           src={src}
           width={200}
