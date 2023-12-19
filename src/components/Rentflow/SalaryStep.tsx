@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { SalaryStepProps } from "@/types/types";
 import { SALARY_RANGES } from "@/utils/constants";
+import { useStepStore } from "@/store/stepStore";
 
 const SalaryStep: React.FC<SalaryStepProps> = ({ cb }) => {
+  const { currentStep, setStep, completeStep } = useStepStore();
+
   const [salaryRange, setSalaryRange] = useState("");
 
   const handleSalaryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,6 +15,9 @@ const SalaryStep: React.FC<SalaryStepProps> = ({ cb }) => {
   const handleNextClick = () => {
     if (salaryRange) {
       cb("salary", salaryRange);
+
+      setStep(currentStep + 1);
+      completeStep(currentStep);
     } else {
       console.error("Please select a salary range");
     }

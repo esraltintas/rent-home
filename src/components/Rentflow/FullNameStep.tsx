@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { validateFullName } from "@/utils/validationUtils";
 import { FullNameStepProps, InputFields } from "@/types/types";
+import { useStepStore } from "@/store/stepStore";
 
 const FullNameStep: React.FC<FullNameStepProps> = (props) => {
+  const { currentStep, setStep, completeStep } = useStepStore();
+
   const [inputFields, setInputFields] = useState<InputFields>({
     name: "",
     surname: "",
@@ -23,6 +26,8 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
   const handleNextClick = () => {
     if (validateFullName(inputFields.name, inputFields.surname)) {
       setValid(true);
+      setStep(currentStep + 1);
+      completeStep(currentStep);
       props.cb(inputFields);
     } else {
       setValid(false);

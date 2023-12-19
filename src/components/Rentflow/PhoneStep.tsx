@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { validatePhone } from "@/utils/validationUtils";
 import { PhoneStepProps } from "@/types/types";
+import { useStepStore } from "@/store/stepStore";
 
 const PhoneStep: React.FC<PhoneStepProps> = (props) => {
+  const { currentStep, setStep, completeStep } = useStepStore();
+
   const [countryCode, setCountryCode] = useState("+49");
   const [phone, setPhone] = useState("");
   const [isValidPhone, setValidPhone] = useState(true);
@@ -13,7 +16,6 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
     const sanitizedValue = inputValue.replace(/[^\d+]/g, "");
 
     const limitedValue = sanitizedValue.slice(0, 13);
-    console.log(limitedValue);
 
     setPhone(limitedValue);
     setValidPhone(validatePhone(limitedValue));
@@ -22,6 +24,9 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
   const handleNextClick = () => {
     if (phone && isValidPhone) {
       props.cb("phone", phone);
+
+      setStep(currentStep + 1);
+      completeStep(currentStep);
     } else {
       setValidPhone(false);
       console.error("Please enter a valid phone number");

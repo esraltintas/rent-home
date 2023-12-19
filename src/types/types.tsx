@@ -48,3 +48,27 @@ export interface SummaryStepProps {
     href: string;
   };
 }
+
+export interface ProgressStepProps {
+  currentStep: number;
+  totalSteps: number;
+  completedSteps: number[];
+}
+
+export interface StepStoreState {
+  currentStep: number;
+  completedSteps: number[];
+  collectedData: {
+    email: string;
+    phone: number;
+    name: string;
+    surname: string;
+    salary: string;
+    href: string;
+  };
+  isValidEmail: boolean;
+  setStep: (step: number) => void;
+  completeStep: (step: number) => void;
+  updateData: (data: { [key: string]: any }) => void;
+  setValidEmail: (isValidEmail: boolean) => void;
+}
