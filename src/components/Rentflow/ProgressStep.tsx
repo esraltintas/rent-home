@@ -2,16 +2,26 @@ import React from "react";
 import { ProgressStepProps } from "@/types/types";
 
 const ProgressStep: React.FC<
-  ProgressStepProps & { completedSteps: number[] }
-> = ({ currentStep, totalSteps, completedSteps }) => {
+  ProgressStepProps & {
+    completedSteps: number[];
+    onStepClick: (step: number) => void;
+  }
+> = ({ currentStep, totalSteps, completedSteps, onStepClick }) => {
+  const handleClick = (step: number) => {
+    if (step <= currentStep) {
+      onStepClick(step);
+    }
+  };
+
   return (
     <div className="flex items-center mt-6 mb-6">
       {Array.from({ length: totalSteps }, (_, index) => (
         <div
           key={index}
-          className={`flex items-center ${
+          className={`flex items-center cursor-pointer ${
             currentStep === index + 1 ? "text-blue-500" : "text-gray-300"
           }`}
+          onClick={() => handleClick(index + 1)}
         >
           <div
             className={`border-${

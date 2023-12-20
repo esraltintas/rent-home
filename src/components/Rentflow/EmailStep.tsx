@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { validateEmail } from "@/utils/validationUtils";
 import { EmailStepProps } from "@/types/types";
 import { useStepStore } from "@/store/stepStore";
 
 const EmailStep: React.FC<EmailStepProps> = (props) => {
-  const { currentStep, setStep, completeStep } = useStepStore();
+  const { currentStep, setStep, completeStep, collectedData, updateData } =
+    useStepStore();
 
   const [email, setEmail] = useState("");
   const [isValidEmail, setValidEmail] = useState(true);
+
+  useEffect(() => {
+    setEmail(collectedData.email || "");
+  }, [collectedData.email]);
 
   const handleEmailChange = ({
     target: { value },
@@ -19,8 +24,9 @@ const EmailStep: React.FC<EmailStepProps> = (props) => {
   const handleNextClick = () => {
     if (email && isValidEmail) {
       props.cb("email", email);
-      setStep(currentStep + 1);
       completeStep(currentStep);
+      setStep(currentStep + 1);
+      updateData({ ...collectedData, email });
     } else {
       setValidEmail(false);
       console.error("Please enter a valid email address");

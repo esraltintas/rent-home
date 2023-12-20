@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SalaryStepProps } from "@/types/types";
 import { SALARY_RANGES } from "@/utils/constants";
 import { useStepStore } from "@/store/stepStore";
 
 const SalaryStep: React.FC<SalaryStepProps> = ({ cb }) => {
-  const { currentStep, setStep, completeStep } = useStepStore();
+  const { currentStep, setStep, completeStep, collectedData } = useStepStore();
 
   const [salaryRange, setSalaryRange] = useState("");
+
+  useEffect(() => {
+    setSalaryRange(collectedData.salary || "");
+  }, [collectedData.salary]);
 
   const handleSalaryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSalaryRange(event.target.value);

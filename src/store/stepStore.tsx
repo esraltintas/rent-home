@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import create from "zustand";
 import { StepStoreState } from "@/types/types";
 
 export const useStepStore = create<StepStoreState>((set) => ({
@@ -16,6 +16,7 @@ export const useStepStore = create<StepStoreState>((set) => ({
   setStep: (step) => set({ currentStep: step }),
   completeStep: (step) =>
     set((state) => ({ completedSteps: [...state.completedSteps, step] })),
+
   updateData: (data) =>
     set((state) => ({ collectedData: { ...state.collectedData, ...data } })),
   setValidEmail: (isValidEmail) => set({ isValidEmail }),

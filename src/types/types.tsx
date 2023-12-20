@@ -72,3 +72,5 @@ export interface StepStoreState {
   updateData: (data: { [key: string]: any }) => void;
   setValidEmail: (isValidEmail: boolean) => void;
 }
+
+export type UpdateDataType = Record<string, any>;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { RentflowProps } from "@/types/types";
+import React from "react";
+import { RentflowProps, UpdateDataType } from "@/types/types";
 import EmailStep from "./EmailStep";
 import FullNameStep from "./FullNameStep";
 import SummaryStep from "./SummaryStep";
@@ -10,22 +10,29 @@ import { useStepStore } from "@/store/stepStore";
 
 const TOTAL_STEPS = 5;
 
-const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
-  const { currentStep, setStep, completedSteps } = useStepStore();
+const Rentflow: React.FC<RentflowProps> = () => {
+  const { currentStep, setStep, updateData, collectedData, completedSteps } =
+    useStepStore();
 
-  const [collectedData, updateData] = useState({
-    email: "",
-    phone: 0,
-    name: "",
-    surname: "",
-    salary: "",
-    href: `/rented?productId=${productId}`,
-  });
+  const getStepCallback =
+    (nextStep: number) =>
+    (fields: { name: string; surname: string } | string, value?: any) => {
+      const newHref = "/rented?productId=";
 
-  const getStepCallback = (nextStep: number) => (fields: any) => {
-    updateData({ ...collectedData, ...fields });
-    setStep(nextStep);
-  };
+      const updatedData: UpdateDataType =
+        typeof fields === "string"
+          ? {
+              [fields]: value,
+              href: newHref,
+            }
+          : {
+              ...fields,
+              href: newHref,
+            };
+
+      updateData(updatedData);
+      setStep(nextStep);
+    };
 
   return (
     <div className="flex flex-col items-center mt-20">
@@ -35,6 +42,11 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
           currentStep={currentStep}
           totalSteps={TOTAL_STEPS}
           completedSteps={completedSteps}
+          onStepClick={(clickedStep: number) => {
+            if (clickedStep <= currentStep) {
+              setStep(clickedStep);
+            }
+          }}
         />
 
         {(currentStep === 1 && <FullNameStep cb={getStepCallback(2)} />) ||

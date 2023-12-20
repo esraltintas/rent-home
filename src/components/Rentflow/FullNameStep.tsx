@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { validateFullName } from "@/utils/validationUtils";
 import { FullNameStepProps, InputFields } from "@/types/types";
 import { useStepStore } from "@/store/stepStore";
 
 const FullNameStep: React.FC<FullNameStepProps> = (props) => {
-  const { currentStep, setStep, completeStep } = useStepStore();
+  const { currentStep, setStep, completeStep, collectedData, updateData } =
+    useStepStore();
 
   const [inputFields, setInputFields] = useState<InputFields>({
     name: "",
@@ -12,6 +13,13 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
   });
 
   const [isValid, setValid] = useState(true);
+
+  useEffect(() => {
+    setInputFields({
+      name: collectedData.name,
+      surname: collectedData.surname,
+    });
+  }, [collectedData]);
 
   const handleInputChange = (field: keyof InputFields, value: string) => {
     const isValidInput = /^[A-Za-z]+$/.test(value);
