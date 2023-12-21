@@ -68,6 +68,7 @@ export interface StepStoreState {
   };
   isValidEmail: boolean;
   setStep: (step: number) => void;
+  clearCompletedSteps: () => void;
   completeStep: (step: number) => void;
   updateData: (data: { [key: string]: any }) => void;
   setValidEmail: (isValidEmail: boolean) => void;

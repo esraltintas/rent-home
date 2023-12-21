@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { validatePhone } from "@/utils/validationUtils";
 import { PhoneStepProps } from "@/types/types";
 import { useStepStore } from "@/store/stepStore";
 
 const PhoneStep: React.FC<PhoneStepProps> = (props) => {
-  const { currentStep, setStep, completeStep, collectedData } = useStepStore();
+  const { currentStep, setStep, completeStep } = useStepStore();
 
   const [countryCode, setCountryCode] = useState("+49");
-  const [phone, setPhone] = useState<number>(0);
+  const [phone, setPhone] = useState("");
   const [isValidPhone, setValidPhone] = useState(true);
-
-  useEffect(() => {
-    setPhone(collectedData.phone || 0);
-  }, [collectedData.phone]);
 
   const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -21,13 +17,13 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
 
     const limitedValue = sanitizedValue.slice(0, 13);
 
-    setPhone(parseInt(limitedValue, 10));
+    setPhone(limitedValue);
     setValidPhone(validatePhone(limitedValue));
   };
 
   const handleNextClick = () => {
     if (phone && isValidPhone) {
-      props.cb("phone", phone.toString());
+      props.cb("phone", phone);
 
       setStep(currentStep + 1);
       completeStep(currentStep);
@@ -45,7 +41,7 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
           type="tel"
           placeholder={countryCode}
           onChange={handlePhoneChange}
-          value={phone.toString()}
+          value={phone}
           className={`border p-1.5 ${
             !isValidPhone ? "border-red-500" : "border-gray-300"
           }`}

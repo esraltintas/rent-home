@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useStepStore } from "@/store/stepStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -21,6 +22,23 @@ const Card: React.FC<CardProps> = ({
   bgColor,
   textColor = "text-black",
 }) => {
+  const { setStep, updateData, completeStep, clearCompletedSteps } =
+    useStepStore();
+
+  const handleRent = () => {
+    setStep(1);
+
+    updateData({
+      email: "",
+      name: "",
+      surname: "",
+      phone: 0,
+      salary: "",
+      href: "",
+    });
+    completeStep(1);
+    clearCompletedSteps();
+  };
   return (
     <div className={`flex flex-1 justify-center ${bgColor} pt-8`}>
       <div className="max-w-md pb-20">
@@ -54,7 +72,8 @@ const Card: React.FC<CardProps> = ({
           </div>
           <Link
             href={link}
-            className="bg-slate-100 hover:bg-slate-200 text-black py-1 px-3 rounded-2xl"
+            onClick={handleRent}
+            className="bg-black hover:bg-slate-800 text-white py-1 px-3 rounded-2xl"
           >
             Rent Now
           </Link>

@@ -10,14 +10,14 @@ import { useStepStore } from "@/store/stepStore";
 
 const TOTAL_STEPS = 5;
 
-const Rentflow: React.FC<RentflowProps> = () => {
+const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
   const { currentStep, setStep, updateData, collectedData, completedSteps } =
     useStepStore();
 
   const getStepCallback =
     (nextStep: number) =>
     (fields: { name: string; surname: string } | string, value?: any) => {
-      const newHref = "/rented?productId=";
+      const newHref = `/rented?productId=${productId}`;
 
       const updatedData: UpdateDataType =
         typeof fields === "string"

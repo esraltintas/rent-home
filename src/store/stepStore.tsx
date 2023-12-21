@@ -20,4 +20,5 @@ export const useStepStore = create<StepStoreState>((set) => ({
   updateData: (data) =>
     set((state) => ({ collectedData: { ...state.collectedData, ...data } })),
   setValidEmail: (isValidEmail) => set({ isValidEmail }),
+  clearCompletedSteps: () => set({ completedSteps: [] }),
 }));
