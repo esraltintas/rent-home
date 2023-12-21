@@ -70,7 +70,7 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
         />
       </div>
       {!isValid && (
-        <p className="text-error text-sm">
+        <p className="text-red-400 text-sm">
           Please enter both name and surname.
         </p>
       )}

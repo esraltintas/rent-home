@@ -1,8 +1,8 @@
 import React from "react";
-import { ProgressStepProps } from "@/types/types";
+import { ProgressProps } from "@/types/types";
 
-const ProgressStep: React.FC<
-  ProgressStepProps & {
+const Progress: React.FC<
+  ProgressProps & {
     completedSteps: number[];
     onStepClick: (step: number) => void;
   }
@@ -43,4 +43,4 @@ const ProgressStep: React.FC<
   );
 };
 
-export default ProgressStep;
+export default Progress;

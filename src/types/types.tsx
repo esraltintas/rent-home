@@ -49,7 +49,7 @@ export interface SummaryStepProps {
   };
 }
 
-export interface ProgressStepProps {
+export interface ProgressProps {
   currentStep: number;
   totalSteps: number;
   completedSteps: number[];

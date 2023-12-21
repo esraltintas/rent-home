@@ -5,7 +5,7 @@ import FullNameStep from "./FullNameStep";
 import SummaryStep from "./SummaryStep";
 import PhoneStep from "./PhoneStep";
 import SalaryStep from "./SalaryStep";
-import ProgressStep from "./ProgressStep";
+import Progress from "../Progress/Progress";
 import { useStepStore } from "@/store/stepStore";
 
 const TOTAL_STEPS = 5;
@@ -38,7 +38,7 @@ const Rentflow: React.FC<RentflowProps> = ({ productId }) => {
     <div className="flex flex-col items-center mt-20">
       <h4 className="mb-6 text-2xl">Rent Home</h4>
       <div className="flex flex-col justify-center w-60">
-        <ProgressStep
+        <Progress
           currentStep={currentStep}
           totalSteps={TOTAL_STEPS}
           completedSteps={completedSteps}

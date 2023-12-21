@@ -46,7 +46,7 @@ const EmailStep: React.FC<EmailStepProps> = (props) => {
           }`}
         />
         {!isValidEmail && (
-          <p className="text-error text-sm">
+          <p className="text-red-400 text-sm">
             Please enter a valid email address.
           </p>
         )}

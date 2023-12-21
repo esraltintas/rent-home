@@ -10,7 +10,7 @@ const SummaryStep: React.FC<SummaryStepProps> = ({ collectedData }) => {
         ([key, value]) =>
           key !== "href" && (
             <div key={key} className="flex justify-between items-center">
-              <span>{key}</span>
+              <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
               <span>{value}</span>
             </div>
           )

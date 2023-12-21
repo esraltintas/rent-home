@@ -47,7 +47,7 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
           }`}
         />
         {!isValidPhone && (
-          <p className="text-rose-500 text-sm">
+          <p className="text-red-400 text-sm">
             Please enter a valid phone number.
           </p>
         )}
