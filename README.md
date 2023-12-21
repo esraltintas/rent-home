@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### RentFlow Project
+
+This project is a RentFlow application built with Next.js, and it's bootstrapped with create-next-app.
 
 ## Getting Started
 
-First, run the development server:
+To run the development server, use one of the following commands:
 
 ```bash
 npm run dev
@@ -16,25 +18,29 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Header
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The header of the RentFlow application may include the Buena logo. Clicking on the Buena logo is designed to reset the entire renting process and start from scratch.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Home Card
 
-## Learn More
+Before starting the renting process, users encounter the "Home Card." This card provides information about available homes, including details such as:
 
-To learn more about Next.js, take a look at the following resources:
+- Image
+- Price
+- Description
+- Location
+- Size
+- Room count
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Renting Process
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+After clicking the "Rent Now" button on the Home Card, users go through the following steps:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Full Name Step: Collects the user's full name.
+- Email Step: Collects the user's email address.
+- Phone Step: Collects the user's phone number.
+- Salary Step: Collects the user's salary information.
+- Summary Step: Displays a summary of collected data and triggers the submission.
