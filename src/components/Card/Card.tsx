@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import RentLink from "./RentLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -8,6 +7,7 @@ import {
   faLayerGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { CardProps } from "@/types/types";
+import RentButton from "../RentButton/RentButton";
 
 const Card: React.FC<CardProps> = ({
   src,
@@ -56,7 +56,7 @@ const Card: React.FC<CardProps> = ({
               <span className="text-slate-600 text-sm">{room}</span>
             </div>
           </div>
-          <RentLink href={link} />
+          <RentButton href={link} />
         </div>
       </div>
     </div>

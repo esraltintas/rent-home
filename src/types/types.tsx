@@ -76,3 +76,9 @@ export interface StepStoreState {
 }
 
 export type UpdateDataType = Record<string, any>;
+
+export interface ButtonProps {
+  className: string;
+  onClick: () => void;
+  children: React.ReactNode;
+}

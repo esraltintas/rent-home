@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../Button/Button";
 import { validatePhone } from "@/utils/validationUtils";
 import { PhoneStepProps } from "@/types/types";
 import { useStepStore } from "@/store/stepStore";
@@ -52,12 +53,12 @@ const PhoneStep: React.FC<PhoneStepProps> = (props) => {
           </p>
         )}
       </div>
-      <button
+      <Button
         className="bg-slate-100 hover:bg-slate-200 text-black py-1 px-3 rounded-2xl"
         onClick={handleNextClick}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };

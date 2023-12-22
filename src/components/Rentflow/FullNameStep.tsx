@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Button from "../Button/Button";
 import { validateFullName } from "@/utils/validationUtils";
 import { FullNameStepProps, InputFields } from "@/types/types";
 import { useStepStore } from "@/store/stepStore";
@@ -74,12 +75,12 @@ const FullNameStep: React.FC<FullNameStepProps> = (props) => {
           Please enter both name and surname.
         </p>
       )}
-      <button
+      <Button
         className="bg-slate-100 hover:bg-slate-200 text-black py-1 px-3 rounded-2xl"
         onClick={handleNextClick}
       >
         Next
-      </button>
+      </Button>
     </div>
   );
 };

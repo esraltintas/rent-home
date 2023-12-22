@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useStepStore } from "@/store/stepStore";
 
-const RentLink: React.FC<{ href: string }> = ({ href }) => {
+const RentButton: React.FC<{ href: string }> = ({ href }) => {
   const { setStep, updateData, completeStep, clearCompletedSteps } =
     useStepStore();
 
@@ -35,4 +35,4 @@ const RentLink: React.FC<{ href: string }> = ({ href }) => {
   );
 };
 
-export default RentLink;
+export default RentButton;
