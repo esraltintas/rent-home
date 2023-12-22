@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <div className={`${styles.headerWrapper}`}>
+    <div className={`${styles.headerWrapper}`} data-testid="header">
       <Link href={"/"}>
         <Image
           src={logo}
