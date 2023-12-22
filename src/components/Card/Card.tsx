@@ -52,6 +52,7 @@ const Card: React.FC<CardProps> = ({
           height={100}
           alt={alt}
           className="rounded-md"
+          layout="responsive"
         />
         <div className={`text-xl pt-2 ${textColor}`}>
           £{price} <span className="text-slate-600 text-sm">/Monat</span>
