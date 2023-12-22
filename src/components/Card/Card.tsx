@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useStepStore } from "@/store/stepStore";
+import RentLink from "./RentLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -23,23 +22,6 @@ const Card: React.FC<CardProps> = ({
   textColor = "text-black",
   dataTestId,
 }) => {
-  const { setStep, updateData, completeStep, clearCompletedSteps } =
-    useStepStore();
-
-  const handleRent = () => {
-    setStep(1);
-
-    updateData({
-      email: "",
-      name: "",
-      surname: "",
-      phone: 0,
-      salary: "",
-      href: "",
-    });
-    completeStep(1);
-    clearCompletedSteps();
-  };
   return (
     <div
       className={`flex flex-1 justify-center ${bgColor} pt-8`}
@@ -74,14 +56,7 @@ const Card: React.FC<CardProps> = ({
               <span className="text-slate-600 text-sm">{room}</span>
             </div>
           </div>
-          <Link
-            href={link}
-            onClick={handleRent}
-            className="bg-black hover:bg-slate-800 text-white py-1 px-3 rounded-2xl"
-            data-testid="rent"
-          >
-            Rent Now
-          </Link>
+          <RentLink href={link} />
         </div>
       </div>
     </div>
