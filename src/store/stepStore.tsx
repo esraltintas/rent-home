@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { StepStoreState } from "@/types/types";
 
 export const useStepStore = create<StepStoreState>((set) => ({

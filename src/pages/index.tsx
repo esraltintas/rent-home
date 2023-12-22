@@ -16,6 +16,7 @@ export default function Home() {
         room={3}
         bgColor="bg-white"
         textColor="text-black"
+        dataTestId="home-card"
       />
     </main>
   );

@@ -21,6 +21,7 @@ const Card: React.FC<CardProps> = ({
   link,
   bgColor,
   textColor = "text-black",
+  dataTestId,
 }) => {
   const { setStep, updateData, completeStep, clearCompletedSteps } =
     useStepStore();
@@ -40,7 +41,10 @@ const Card: React.FC<CardProps> = ({
     clearCompletedSteps();
   };
   return (
-    <div className={`flex flex-1 justify-center ${bgColor} pt-8`}>
+    <div
+      className={`flex flex-1 justify-center ${bgColor} pt-8`}
+      data-testid={dataTestId}
+    >
       <div className="max-w-md pb-20">
         <Image
           src={src}
@@ -48,7 +52,6 @@ const Card: React.FC<CardProps> = ({
           height={100}
           alt={alt}
           className="rounded-md"
-          layout="responsive"
         />
         <div className={`text-xl pt-2 ${textColor}`}>
           £{price} <span className="text-slate-600 text-sm">/Monat</span>
@@ -74,6 +77,7 @@ const Card: React.FC<CardProps> = ({
             href={link}
             onClick={handleRent}
             className="bg-black hover:bg-slate-800 text-white py-1 px-3 rounded-2xl"
+            data-testid="rent"
           >
             Rent Now
           </Link>

@@ -11,6 +11,7 @@ export interface CardProps {
   size: number;
   room: number;
   price: number;
+  dataTestId: string;
 }
 
 export interface RentflowProps {
