@@ -4,7 +4,7 @@ import HomeImg from "@/assets/home.png";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen">
+    <main className="flex min-h-screen p-2">
       <Card
         src={HomeImg}
         alt="Home"
